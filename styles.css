@@ -1,0 +1,668 @@
+/* ==========================================================================
+   The Learning Skills Trust — 2026 refresh
+   Design system / shared stylesheet
+   ========================================================================== */
+
+:root{
+  --indigo:#1D183B;
+  --indigo-2:#2A2350;
+  --indigo-soft:#3a3560;
+  --blue:#2E7FBB;
+  --blue-light:#5AA9E6;
+  --gold:#F5D360;
+  --gold-deep:#E9B93A;
+  --red:#DC3232;
+  --cream:#FAF8F3;
+  --cream-2:#F2EEE5;
+  --paper:#FFFFFF;
+  --ink:#1D183B;
+  --muted:#6E6A82;
+  --line:rgba(29,24,59,.10);
+  --shadow-sm:0 2px 10px rgba(29,24,59,.06);
+  --shadow:0 18px 50px -20px rgba(29,24,59,.28);
+  --shadow-lg:0 40px 90px -40px rgba(29,24,59,.45);
+  --r-sm:12px;
+  --r:20px;
+  --r-lg:32px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Raleway",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  font-size:17px;
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+section{position:relative}
+.sec{padding:110px 0}
+.sec-tight{padding:72px 0}
+
+/* ---------- Typography ---------- */
+h1,h2,h3,h4{font-weight:800;line-height:1.06;letter-spacing:-.02em;color:var(--ink)}
+.display{font-size:clamp(2.7rem,6vw,4.6rem);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+h2{font-size:clamp(2rem,4vw,3rem)}
+h3{font-size:1.35rem;letter-spacing:-.01em}
+.lead{font-size:clamp(1.1rem,1.6vw,1.32rem);color:var(--muted);font-weight:400;line-height:1.6}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--gold);border-radius:2px}
+.eyebrow.center{justify-content:center}
+.muted{color:var(--muted)}
+.center{text-align:center}
+.mx{max-width:720px}
+.mx.center{margin-left:auto;margin-right:auto}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-weight:700;font-size:.98rem;letter-spacing:.01em;
+  padding:15px 26px;border-radius:100px;border:1.5px solid transparent;
+  cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s,color .3s;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--indigo);color:#fff;box-shadow:0 14px 30px -12px rgba(29,24,59,.6)}
+.btn-primary:hover{background:var(--indigo-2);box-shadow:0 20px 40px -14px rgba(29,24,59,.7)}
+.btn-gold{background:var(--gold);color:var(--indigo)}
+.btn-gold:hover{background:var(--gold-deep)}
+.btn-ghost{background:transparent;color:var(--indigo);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--indigo);background:rgba(29,24,59,.03)}
+.btn-light{background:#fff;color:var(--indigo)}
+.btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.btn-outline-light:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.textlink{color:var(--blue);font-weight:700;display:inline-flex;align-items:center;gap:7px}
+.textlink .arrow{transition:transform .3s var(--ease)}
+.textlink:hover .arrow{transform:translateX(4px)}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+  padding:20px 0;
+}
+.site-header.scrolled{
+  background:rgba(250,248,243,.82);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);padding:12px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.01em;font-size:1.05rem}
+.brand img{height:46px;width:auto;transition:height .4s var(--ease)}
+.scrolled .brand img{height:40px}
+.nav-links{display:flex;align-items:center;gap:6px;list-style:none}
+.nav-links a{
+  padding:10px 15px;border-radius:100px;font-weight:600;font-size:.96rem;color:var(--indigo);
+  transition:background .25s,color .25s;position:relative;
+}
+.nav-links a:hover{background:rgba(29,24,59,.06)}
+.nav-links a.active{color:var(--blue)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.nav-toggle span{width:24px;height:2px;background:var(--indigo);border-radius:2px;transition:.3s}
+
+/* ---------- Hero ---------- */
+.hero{padding:170px 0 90px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy .display{margin-bottom:24px}
+.hero-copy .lead{max-width:520px;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-media{position:relative}
+.hero-media .shot{
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);
+  aspect-ratio:1/1;transform:rotate(1.2deg);
+}
+.hero-media .shot img{width:100%;height:100%;object-fit:cover}
+.hero-badge{
+  position:absolute;left:-26px;bottom:38px;background:#fff;border-radius:var(--r);
+  padding:18px 22px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px;
+  transform:rotate(-2deg);
+}
+.hero-badge .n{font-size:2rem;font-weight:800;color:var(--indigo);line-height:1}
+.hero-badge .l{font-size:.82rem;color:var(--muted);font-weight:600;line-height:1.2}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;z-index:-1}
+.blob.a{width:420px;height:420px;background:var(--blue-light);top:-120px;right:-100px;opacity:.25}
+.blob.b{width:360px;height:360px;background:var(--gold);bottom:-140px;left:-120px;opacity:.22}
+
+/* ---------- Trust bar ---------- */
+.trust{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-inner{display:flex;align-items:center;gap:36px;flex-wrap:wrap;justify-content:center}
+.trust p{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.trust-schools{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;color:var(--indigo);font-weight:700;opacity:.75}
+.trust-schools span{font-size:1rem}
+
+/* ---------- Cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{
+  background:var(--paper);border-radius:var(--r);padding:34px;border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.card .ico{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;
+  background:rgba(46,127,187,.12);color:var(--blue);
+}
+.card.gold .ico{background:rgba(245,211,96,.28);color:var(--gold-deep)}
+.card.red .ico{background:rgba(220,50,50,.12);color:var(--red)}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted);font-size:.98rem}
+.card .textlink{margin-top:16px}
+
+/* ---------- Feature (alternating) ---------- */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.feature.rev .feature-media{order:2}
+.feature-media{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.feature-media img{width:100%;height:100%;object-fit:cover}
+.feature-copy h2{margin-bottom:18px}
+.feature-copy .lead{margin-bottom:24px}
+.tick{list-style:none;display:grid;gap:14px;margin:0 0 28px}
+.tick li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.tick li::before{
+  content:"";flex:0 0 22px;height:22px;border-radius:50%;margin-top:2px;
+  background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat;
+}
+
+/* ---------- Stats band ---------- */
+.band-dark{background:var(--indigo);color:#fff;position:relative;overflow:hidden}
+.band-dark h2,.band-dark h3{color:#fff}
+.band-dark .lead{color:rgba(255,255,255,.7)}
+.band-dark .eyebrow{color:var(--gold)}
+.band-dark .eyebrow::before{background:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+.stat .n{font-size:clamp(3rem,6vw,4.6rem);font-weight:800;letter-spacing:-.04em;line-height:1;
+  background:linear-gradient(180deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .l{margin-top:10px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.04em}
+.grid-lines{position:absolute;inset:0;opacity:.06;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:52px 52px}
+
+/* ---------- Quote ---------- */
+.quote-wrap{max-width:860px;margin:0 auto;text-align:center}
+.quote{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.28}
+.quote .hl{color:var(--blue)}
+.quote-src{margin-top:24px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+
+/* ---------- Programmes split ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.prog{
+  border-radius:var(--r-lg);padding:44px;color:#fff;position:relative;overflow:hidden;
+  min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;
+  transition:transform .4s var(--ease);
+}
+.prog:hover{transform:translateY(-6px)}
+.prog.psb{background:linear-gradient(150deg,#2A2350,#1D183B)}
+.prog.sdf{background:linear-gradient(150deg,#2E7FBB,#1D5b8f)}
+.prog .tag{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.8;margin-bottom:12px}
+.prog h3{color:#fff;font-size:1.7rem;margin-bottom:10px}
+.prog p{color:rgba(255,255,255,.82);margin-bottom:22px}
+.prog .textlink{color:#fff}
+.prog .glow{position:absolute;width:220px;height:220px;border-radius:50%;filter:blur(60px);top:-60px;right:-40px;opacity:.4}
+.prog.psb .glow{background:var(--gold)}
+.prog.sdf .glow{background:var(--blue-light)}
+
+/* ---------- CTA band ---------- */
+.cta{
+  background:linear-gradient(135deg,var(--indigo),var(--indigo-2));
+  border-radius:var(--r-lg);padding:70px 56px;text-align:center;color:#fff;position:relative;overflow:hidden;
+}
+.cta h2{color:#fff;margin-bottom:16px}
+.cta .lead{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 30px}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- Partners grid ---------- */
+.school-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.school{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:20px 22px;font-weight:700;font-size:.98rem;color:var(--indigo);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.school:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:var(--shadow-sm)}
+.school .arrow{color:var(--blue);opacity:0;transition:opacity .3s,transform .3s}
+.school:hover .arrow{opacity:1;transform:translateX(2px)}
+
+/* ---------- Team ---------- */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.member{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:32px;text-align:center;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.member:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.member .avatar{width:96px;height:96px;border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;font-size:2rem;font-weight:800;color:#fff;background:linear-gradient(150deg,var(--blue),var(--indigo))}
+.member h3{margin-bottom:4px}
+.member .role{color:var(--blue);font-weight:700;font-size:.9rem;letter-spacing:.02em;margin-bottom:12px}
+.member p{color:var(--muted);font-size:.94rem}
+
+/* ---------- Timeline ---------- */
+.timeline{max-width:820px;margin:0 auto;position:relative;padding-left:40px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding-bottom:44px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-38px;top:4px;width:20px;height:20px;border-radius:50%;background:var(--blue);border:4px solid var(--cream);box-shadow:0 0 0 1px var(--line)}
+.tl-year{font-weight:800;color:var(--blue);font-size:1.05rem;letter-spacing:.02em;margin-bottom:6px}
+.tl-item h3{margin-bottom:8px}
+.tl-item p{color:var(--muted)}
+
+/* ---------- Blog ---------- */
+.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.post{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease);display:flex;flex-direction:column}
+.post:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.post .thumb{aspect-ratio:16/10;overflow:hidden}
+.post .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.post:hover .thumb img{transform:scale(1.05)}
+.post .body{padding:26px;display:flex;flex-direction:column;flex:1}
+.post .meta{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:12px}
+.post h3{font-size:1.2rem;margin-bottom:10px}
+.post p{color:var(--muted);font-size:.95rem;flex:1}
+.post .textlink{margin-top:16px}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:8px}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:var(--r-sm);
+  font-family:inherit;font-size:1rem;background:var(--paper);color:var(--ink);transition:border-color .25s,box-shadow .25s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(46,127,187,.12)}
+.field textarea{min-height:130px;resize:vertical}
+.contact-info{background:var(--indigo);color:#fff;border-radius:var(--r-lg);padding:44px}
+.contact-info h3{color:#fff;margin-bottom:24px}
+.ci-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.ci-item .ico{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:0 0 auto;color:var(--gold)}
+.ci-item .l{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.6);font-weight:700}
+.ci-item .v{font-weight:700;font-size:1.05rem}
+
+/* ---------- Page hero (inner pages) ---------- */
+.page-hero{padding:160px 0 60px;text-align:center;position:relative;overflow:hidden}
+.page-hero .display{font-size:clamp(2.4rem,5vw,3.8rem);margin-bottom:18px}
+.page-hero .lead{max-width:640px;margin:0 auto}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--indigo);color:rgba(255,255,255,.7);padding:72px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand img{height:52px;margin-bottom:18px}
+.foot-brand p{color:rgba(255,255,255,.6);font-size:.95rem;max-width:280px}
+.foot-col h4{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.foot-col ul{list-style:none;display:grid;gap:11px}
+.foot-col a{color:rgba(255,255,255,.7);font-size:.96rem;transition:color .25s}
+.foot-col a:hover{color:var(--gold)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;flex-wrap:wrap;font-size:.86rem;color:rgba(255,255,255,.55)}
+.foot-bottom .socials{display:flex;gap:12px}
+.foot-bottom .socials a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;transition:background .25s}
+.foot-bottom .socials a:hover{background:var(--blue)}
+
+/* ---------- Reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+
+/* ---------- Responsive ---------- */
+@media(max-width:960px){
+  .hero-grid,.feature,.contact-grid{grid-template-columns:1fr}
+  .feature.rev .feature-media{order:0}
+  .cards,.team-grid,.post-grid,.stats{grid-template-columns:1fr 1fr}
+  .school-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+  .hero-media{max-width:460px;margin:0 auto}
+  .nav-links,.nav-cta .btn-ghost{display:none}
+  .nav-toggle{display:flex}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:16px;right:16px;background:#fff;
+    flex-direction:column;padding:16px;border-radius:var(--r);box-shadow:var(--shadow);gap:4px}
+  .nav-links.open a{width:100%}
+}
+@media(max-width:560px){
+  .sec{padding:72px 0}
+  .cards,.team-grid,.post-grid,.stats,.school-grid,.foot-grid{grid-template-columns:1fr}
+  .cta{padding:48px 26px}
+  .hero-badge{left:0}
+}
+
+/* ==========================================================================
+   2026 refresh — dynamic components (v2)
+   ========================================================================== */
+
+/* Softer, less boxy cards */
+.card{border:none;box-shadow:0 20px 50px -30px rgba(29,24,59,.25);background:#fff}
+.card:hover{box-shadow:0 34px 70px -34px rgba(29,24,59,.4)}
+.band-dark .card{background:rgba(255,255,255,.05);backdrop-filter:blur(4px);box-shadow:none;border:1px solid rgba(255,255,255,.09)}
+.band-dark .card h3{color:#fff}
+.band-dark .card p{color:rgba(255,255,255,.72)}
+
+/* ---------- Layered hero collage ---------- */
+.hero-collage{position:relative;min-height:520px}
+.hero-collage .c-img{position:absolute;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.hero-collage .c-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-collage .c1{width:64%;height:66%;top:0;right:0;z-index:2;transform:rotate(1.5deg)}
+.hero-collage .c2{width:46%;height:44%;bottom:6%;left:0;z-index:3;transform:rotate(-2.5deg)}
+.hero-collage .c3{width:34%;height:30%;bottom:0;right:8%;z-index:4;transform:rotate(3deg)}
+.hero-collage .c-shape{position:absolute;width:130px;height:130px;border-radius:28px;background:var(--gold);top:12%;left:8%;z-index:1;transform:rotate(12deg);opacity:.9}
+.hero-collage .c-ring{position:absolute;width:90px;height:90px;border-radius:50%;border:10px solid var(--blue);top:2%;right:2%;z-index:5;opacity:.85}
+.hero-badge.float2{left:auto;right:-10px;bottom:auto;top:44%}
+
+/* ---------- Photo marquee ---------- */
+.marquee{padding:26px 0;overflow:hidden;position:relative}
+.marquee-track{display:flex;gap:18px;width:max-content;animation:scrollx 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track img{height:230px;width:auto;border-radius:18px;object-fit:cover;box-shadow:var(--shadow-sm)}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-label{text-align:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:22px}
+
+/* ---------- Numbered skills blocks ---------- */
+.skills-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.skill-row{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.skill{
+  position:relative;padding:34px 30px 30px;border-radius:24px;background:#fff;
+  box-shadow:0 20px 50px -32px rgba(29,24,59,.28);overflow:hidden;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.skill:hover{transform:translateY(-6px);box-shadow:0 34px 70px -34px rgba(29,24,59,.4)}
+.skill .num{
+  font-size:3.2rem;font-weight:800;letter-spacing:-.04em;line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px rgba(46,127,187,.35);margin-bottom:14px;display:block;
+}
+.skill .sk-ico{width:54px;height:54px;position:absolute;top:28px;right:26px;border-radius:50%;background:var(--blue);display:grid;place-items:center;box-shadow:0 10px 22px -10px rgba(46,127,187,.7)}
+.skill .sk-ico img{width:58%;height:58%;object-fit:contain}
+.skill.dark .sk-ico{background:var(--blue-light)}
+.skill h3{margin-bottom:8px;font-size:1.25rem}
+.skill p{color:var(--muted);font-size:.96rem}
+.skill::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:0;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .5s var(--ease)}
+.skill:hover::after{width:100%}
+.skill.dark{background:var(--indigo)}
+.skill.dark h3{color:#fff}.skill.dark p{color:rgba(255,255,255,.72)}
+.skill.dark .num{-webkit-text-stroke:1.5px rgba(245,211,96,.5)}
+
+/* ---------- Editorial band with offset image ---------- */
+.offset{position:relative;background:var(--indigo);border-radius:var(--r-lg);overflow:hidden;color:#fff;padding:64px 56px}
+.offset .grid-lines{opacity:.06}
+.offset-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:2}
+.offset h2,.offset h3{color:#fff}
+.offset .lead{color:rgba(255,255,255,.75)}
+.offset-media{border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;transform:rotate(-1.5deg)}
+.offset-media img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- Feature media: allow layered version ---------- */
+.feature-media.tilt{transform:rotate(-1.8deg)}
+.feature-media.tilt2{transform:rotate(1.8deg)}
+.feature-stack{position:relative}
+.feature-stack .fs-badge{position:absolute;right:-18px;bottom:-18px;background:var(--gold);color:var(--indigo);border-radius:18px;padding:16px 20px;font-weight:800;box-shadow:var(--shadow);z-index:3;line-height:1.1}
+.feature-stack .fs-badge small{display:block;font-weight:600;font-size:.72rem;opacity:.75;letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- Team: LST lead cards ---------- */
+.lead-team{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.lead-card{
+  display:grid;grid-template-columns:132px 1fr;gap:24px;align-items:center;
+  background:#fff;border-radius:24px;padding:24px;box-shadow:0 22px 55px -34px rgba(29,24,59,.3);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.lead-card:hover{transform:translateY(-5px);box-shadow:0 36px 80px -36px rgba(29,24,59,.45)}
+.lead-card .photo{width:132px;height:132px;border-radius:20px;overflow:hidden;background:var(--cream-2)}
+.lead-card .photo img{width:100%;height:100%;object-fit:cover}
+.lead-card .role{color:var(--blue);font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.lead-card h3{font-size:1.4rem;margin-bottom:8px}
+.lead-card p{color:var(--muted);font-size:.94rem}
+
+/* ---------- Team: people portrait grid ---------- */
+.people-section{margin-top:70px}
+.people-head{display:flex;align-items:baseline;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.people-head h2{font-size:1.9rem}
+.people-head .count{color:var(--blue);font-weight:800;font-size:1.05rem}
+.people-head .line{flex:1;height:1px;background:var(--line);min-width:40px}
+.people-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 24px}
+.person{text-align:center;transition:transform .35s var(--ease)}
+.person:hover{transform:translateY(-5px)}
+.person .portrait{
+  width:100%;aspect-ratio:1/1;border-radius:22px;overflow:hidden;margin-bottom:14px;
+  background:var(--cream-2);box-shadow:0 18px 45px -28px rgba(29,24,59,.35);position:relative;
+}
+.person .portrait img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.person:hover .portrait img{transform:scale(1.06)}
+.person h4{font-size:1.02rem;font-weight:800;letter-spacing:-.01em;margin-bottom:2px}
+.person .r{color:var(--muted);font-size:.86rem;font-weight:600}
+
+/* ---------- Section tint ---------- */
+.tint{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+
+/* ==========================================================================
+   v3 — Primer-style line/grid decor, logo, team bios modal
+   ========================================================================== */
+
+/* Logo swap: blue on light headers, white on dark */
+.brand img.logo{height:44px}
+.scrolled .brand img.logo{height:38px}
+.site-header.dark .brand img.logo, .site-header.on-dark .brand img.logo{content:none}
+
+/* ---------- Primer grid-art (thin lines + coloured cells) ---------- */
+.gridart{position:absolute;pointer-events:none;z-index:0;opacity:.85}
+.gridart-tr{top:90px;right:0}
+.gridart-bl{bottom:-10px;left:0}
+.gridart-tl{top:100px;left:0}
+.gridart svg{display:block}
+/* Big faint animated line motifs from brand SVGs */
+.linesvg{position:absolute;pointer-events:none;z-index:0;background-repeat:no-repeat;background-size:contain;opacity:.5}
+.linesvg.blue{background-image:url("assets/bg/BUE LINE.svg")}
+.linesvg.gold{background-image:url("assets/bg/animate 1.svg")}
+.linesvg.grid{background-image:url("assets/bg/Grid background_animated.svg")}
+.hero .wrap, .page-hero .wrap, .band-dark .wrap, .offset-grid, .skills-head, .skill-row, .cards{position:relative;z-index:2}
+
+/* ---------- Dark header (PSB / SDF pages) ---------- */
+.site-header.dark .nav-links a{color:rgba(255,255,255,.88)}
+.site-header.dark .nav-links a:hover{background:rgba(255,255,255,.14)}
+.site-header.dark .nav-links a.active{color:#fff}
+.site-header.dark .btn-ghost{color:#fff;border-color:rgba(255,255,255,.32)}
+.site-header.dark .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.site-header.dark .nav-toggle span{background:#fff}
+.site-header.dark.scrolled{background:rgba(24,20,46,.9)}
+.site-header.dark.scrolled .nav-links a{color:#fff}
+
+/* ---------- Branded (PSB/SDF) dark hero ---------- */
+.brand-hero{position:relative;padding:190px 0 130px;color:#fff;overflow:hidden;background:#1d183b}
+.brand-hero .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.85}
+.brand-hero .veil{position:absolute;inset:0;background:linear-gradient(120deg,rgba(20,17,45,.86) 40%,rgba(20,17,45,.5))}
+.brand-hero .wrap{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.brand-hero h1{color:#fff;max-width:12ch}
+.brand-hero .lead{color:rgba(255,255,255,.82);max-width:560px}
+.brand-hero .eyebrow{color:var(--gold)}
+.brand-hero .eyebrow::before{background:currentColor}
+.brand-hero .tagpill{display:inline-block;padding:7px 16px;border-radius:100px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-weight:700;font-size:.82rem;letter-spacing:.04em;margin-bottom:22px}
+
+/* Theme accent overrides (scope on a wrapper) */
+.theme-psb{--blue:#e0913f}
+.theme-sdf{--blue:#4fa596}
+
+/* ---------- Team: clickable bio cards ---------- */
+.lead-card{border:none;text-align:left;font-family:inherit;cursor:pointer;width:100%;position:relative}
+.lead-card .bio-more{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-weight:700;font-size:.86rem;margin-top:10px}
+.lead-card .bio-more .arrow{transition:transform .3s var(--ease)}
+.lead-card:hover .bio-more .arrow{transform:translateX(4px)}
+.person{border:none;background:none;font-family:inherit;cursor:pointer;padding:0}
+.person .portrait-cue{
+  position:absolute;left:0;right:0;bottom:0;padding:10px;text-align:center;color:#fff;font-weight:700;font-size:.82rem;
+  background:linear-gradient(180deg,transparent,rgba(29,24,59,.72));opacity:0;transition:opacity .3s var(--ease);
+}
+.person:hover .portrait-cue{opacity:1}
+
+/* ---------- Bio modal ---------- */
+.bio-modal{position:fixed;inset:0;z-index:200;display:none}
+.bio-modal.open{display:block}
+.bio-overlay{position:absolute;inset:0;background:rgba(20,17,45,.55);backdrop-filter:blur(3px);animation:fade .3s ease}
+.bio-dialog{
+  position:relative;max-width:600px;margin:8vh auto 0;background:#fff;border-radius:26px;
+  padding:36px;box-shadow:var(--shadow-lg);animation:pop .35s var(--ease);max-height:82vh;overflow:auto;
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+.bio-close{position:absolute;top:18px;right:20px;border:none;background:var(--cream-2);width:38px;height:38px;border-radius:50%;font-size:1.5rem;line-height:1;cursor:pointer;color:var(--indigo);transition:background .2s}
+.bio-close:hover{background:var(--gold)}
+.bio-modal-head{display:flex;gap:20px;align-items:center;margin-bottom:20px}
+.bio-photo{width:96px;height:96px;border-radius:20px;overflow:hidden;flex:0 0 auto;background:var(--cream-2)}
+.bio-photo img{width:100%;height:100%;object-fit:cover}
+.bio-modal-head .role{color:var(--blue);font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.bio-modal-head h3{font-size:1.6rem}
+.bio-body{color:var(--muted);font-size:1.02rem;line-height:1.7}
+
+@media(max-width:960px){
+  .hero-collage{min-height:420px}
+  .skills-head{grid-template-columns:1fr;gap:16px}
+  .skill-row{grid-template-columns:1fr 1fr}
+  .offset-grid{grid-template-columns:1fr;gap:30px}
+  .lead-team{grid-template-columns:1fr}
+  .people-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:560px){
+  .skill-row{grid-template-columns:1fr}
+  .people-grid{grid-template-columns:repeat(2,1fr)}
+  .lead-card{grid-template-columns:96px 1fr;gap:16px;padding:18px}
+  .lead-card .photo{width:96px;height:96px}
+  .marquee-track img{height:170px}
+  .offset{padding:44px 26px}
+}
+
+
+/* ==========================================================================
+   v4 — blue hero, cursor parallax, school logos, colour variety
+   ========================================================================== */
+
+/* ---------- Homepage blue hero panel ---------- */
+.hero{padding:140px 0 70px}
+.hero-panel{position:relative;border-radius:38px;overflow:hidden;color:#fff;
+  background:linear-gradient(135deg,#3a95d4 0%,#2E7FBB 42%,#215f96 100%);
+  box-shadow:0 50px 100px -50px rgba(29,24,59,.6);padding:8px}
+.hero-panel .hero-inner{position:relative;z-index:3;padding:64px 60px}
+.hero-anim{position:absolute;inset:0;background:url("assets/bg/animate 1_animated.svg") center right/cover no-repeat;opacity:.3;pointer-events:none;z-index:1}
+.hero-glowb{position:absolute;width:340px;height:340px;border-radius:50%;background:#F5D360;filter:blur(90px);opacity:.35;top:-120px;left:-80px;z-index:0}
+.hero-panel .hero-grid{align-items:center}
+.hero-panel .hero-copy .display{color:#fff}
+.hero-panel .hero-copy .lead{color:rgba(255,255,255,.9)}
+.hero-panel .eyebrow{color:#FCE38A}
+.hero-panel .eyebrow::before{background:#F5D360}
+.hero-panel .btn-primary{background:#F5D360;color:var(--indigo)}
+.hero-panel .btn-primary:hover{background:#E9B93A}
+.hero-panel .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero-panel .btn-ghost:hover{background:rgba(255,255,255,.14)}
+.hero-panel .hero-badge{background:#fff}
+/* Parallax collage */
+.hero-collage .c-img,.hero-collage .c-shape,.hero-collage .c-ring,.hero-collage .hero-badge{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+.hero-parallax .c-img,.hero-parallax .c-shape,.hero-parallax .c-ring,.hero-parallax .hero-badge{transition:transform .12s ease-out}
+
+/* ---------- School logo carousel (homepage) ---------- */
+.logo-strip{padding:32px 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+.logo-strip .label{text-align:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:22px}
+.logo-track{display:flex;gap:20px;width:max-content;align-items:center;animation:scrollx 70s linear infinite}
+.logo-strip:hover .logo-track{animation-play-state:paused}
+.logo-item{flex:0 0 auto;height:78px;width:148px;display:grid;place-items:center;padding:10px;border-radius:14px;transition:transform .3s,background .3s}
+.logo-item:hover{background:var(--cream-2);transform:translateY(-3px)}
+.logo-item img{max-height:58px;max-width:120px;object-fit:contain;filter:grayscale(1);opacity:.68;transition:filter .35s,opacity .35s}
+.logo-item:hover img{filter:none;opacity:1}
+
+/* ---------- School logo wall (schools page) ---------- */
+.logo-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.logo-tile{background:#fff;border:1px solid var(--line);border-radius:18px;height:130px;display:grid;place-items:center;padding:20px;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.logo-tile:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--blue)}
+.logo-tile img{max-height:82px;max-width:88%;object-fit:contain;transition:transform .3s}
+.logo-tile:hover img{transform:scale(1.05)}
+
+/* ---------- PSB / SDF hero: colour + animated line bg ---------- */
+.brand-hero.psb{background:#3a2350}
+.brand-hero.sdf{background:#472c85}
+.brand-hero .bganim{position:absolute;inset:0;background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.55;z-index:1}
+.brand-hero.psb .bganim{background-image:url("assets/bg/PSB - Lines 3_animated.svg")}
+.brand-hero.sdf .bganim{background-image:url("assets/bg/SDF - purple_animated.svg")}
+.brand-hero.psb .veil{background:linear-gradient(120deg,rgba(45,24,64,.82) 42%,rgba(45,24,64,.4))}
+.brand-hero.sdf .veil{background:linear-gradient(120deg,rgba(58,36,110,.82) 42%,rgba(58,36,110,.38))}
+.brand-hero.psb .eyebrow{color:#f0a35a}
+.brand-hero.sdf .eyebrow{color:#c9a9ff}
+
+/* ---------- Banner colour variants (mix up the dark blue) ---------- */
+.band-plum{background:#3a2350 !important}
+.band-teal{background:#236b60 !important}
+.band-blue{background:linear-gradient(135deg,#2E7FBB,#215f96) !important}
+.cta.cta-teal{background:linear-gradient(135deg,#2a7d70,#1c5a50)}
+.cta.cta-plum{background:linear-gradient(135deg,#4a2d64,#33203f)}
+
+@media(max-width:960px){
+  .logo-wall{grid-template-columns:repeat(3,1fr)}
+  .hero-panel .hero-inner{padding:44px 30px}
+}
+@media(max-width:560px){
+  .logo-wall{grid-template-columns:repeat(2,1fr)}
+  .hero-panel{border-radius:26px}
+}
+
+/* Parallax transforms (translate via vars, keep original tilt) */
+.hero-collage .c1{transform:translate(var(--px,0),var(--py,0)) rotate(1.5deg)}
+.hero-collage .c2{transform:translate(var(--px,0),var(--py,0)) rotate(-2.5deg)}
+.hero-collage .c3{transform:translate(var(--px,0),var(--py,0)) rotate(3deg)}
+.hero-collage .c-shape{transform:translate(var(--px,0),var(--py,0)) rotate(12deg)}
+.hero-collage .c-ring{transform:translate(var(--px,0),var(--py,0))}
+.hero-collage .hero-badge.float2{transform:translate(var(--px,0),var(--py,0)) rotate(-2deg)}
+
+/* extra band variants */
+.band-purple{background:#472c85 !important}
+.cta.cta-purple{background:linear-gradient(135deg,#5a3aa0,#37206b)}
+
+/* ==========================================================================
+   v5 — full-width hero, bigger carousel logos, school names, PSB/SDF hero logo
+   ========================================================================== */
+
+/* Full-width blue hero (no box) */
+.hero.hero-full{padding:160px 0 96px;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#3a95d4 0%,#2E7FBB 46%,#1f5a8f 100%)}
+.hero-full .hero-anim{position:absolute;inset:0;background:url("assets/bg/animate 1_animated.svg") center/cover no-repeat;opacity:.22;pointer-events:none;z-index:1}
+.hero-full .hero-glowb{position:absolute;width:440px;height:440px;border-radius:50%;background:#F5D360;filter:blur(100px);opacity:.26;top:-150px;left:-110px;z-index:0}
+.hero-full .wrap{position:relative;z-index:3}
+.hero-full .hero-copy .display{color:#fff}
+.hero-full .hero-copy .lead{color:rgba(255,255,255,.9)}
+.hero-full .eyebrow{color:#FCE38A}
+.hero-full .eyebrow::before{background:#F5D360}
+.hero-full .btn-primary{background:#F5D360;color:var(--indigo)}
+.hero-full .btn-primary:hover{background:#E9B93A}
+.hero-full .btn-ghost{color:#fff;border-color:rgba(255,255,255,.42)}
+.hero-full .btn-ghost:hover{background:rgba(255,255,255,.14)}
+.hero-full .hero-badge{background:#fff}
+
+/* Bigger carousel logos */
+.logo-item{height:110px;width:210px;padding:12px}
+.logo-item img{max-height:88px;max-width:180px}
+
+/* Schools page: name under logo */
+.logo-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;height:170px}
+.logo-tile img{max-height:74px;max-width:88%}
+.logo-tile .logo-name{font-size:.84rem;font-weight:700;color:var(--indigo);text-align:center;line-height:1.25;letter-spacing:-.01em}
+.logo-tile:hover .logo-name{color:var(--blue)}
+
+/* PSB / SDF hero logo chip */
+.brand-hero .hero-logo{width:94px;height:94px;background:#fff;border-radius:22px;padding:14px;margin-bottom:24px;display:grid;place-items:center;box-shadow:0 20px 46px -20px rgba(0,0,0,.55)}
+.brand-hero .hero-logo img{width:100%;height:100%;object-fit:contain}
+
+/* v6 — hero logo without white chip (direct wordmark on dark hero) */
+.brand-hero .hero-logo{width:auto;height:auto;background:none;border-radius:0;padding:0;box-shadow:none;margin-bottom:22px;display:block}
+.brand-hero .hero-logo img{height:60px;width:auto;object-fit:contain}
+
+/* v7 — hero logo left-aligned + full-width "why it matters" band */
+.brand-hero .hero-logo{display:block;width:fit-content;margin:0 0 22px 0}
+.brand-hero .hero-logo img{display:block;height:60px;width:auto}
+
+.offset-band{background:var(--indigo);color:#fff;padding:88px 0;position:relative;overflow:hidden}
+.offset-band h2,.offset-band h3{color:#fff}
+.offset-band .lead{color:rgba(255,255,255,.8)}
+.offset-band .eyebrow{color:var(--gold)}
+.offset-band .offset-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center;position:relative;z-index:2}
+.offset-band .offset-media{border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;transform:rotate(-1.5deg)}
+.offset-band .offset-media img{width:100%;height:100%;object-fit:cover}
+@media(max-width:960px){.offset-band .offset-grid{grid-template-columns:1fr;gap:30px}}
