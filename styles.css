@@ -666,3 +666,61 @@ h3{font-size:1.35rem;letter-spacing:-.01em}
 .offset-band .offset-media{border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;transform:rotate(-1.5deg)}
 .offset-band .offset-media img{width:100%;height:100%;object-fit:cover}
 @media(max-width:960px){.offset-band .offset-grid{grid-template-columns:1fr;gap:30px}}
+
+/* ==========================================================================
+   v8 — brand icons, smaller hero logos, mobile hero/menu/contact fixes
+   ========================================================================== */
+
+/* Brand SVG icons in the 'modern measure' cards */
+.card .ico.ico-img{background:none;padding:0;width:58px;height:58px;border-radius:0}
+.card .ico.ico-img img{width:100%;height:100%;object-fit:contain}
+
+/* Slightly smaller PSB / SDF hero logos */
+.brand-hero .hero-logo img{height:46px}
+
+/* ---------- Mobile: fix hero image stacking ---------- */
+@media(max-width:700px){
+  .hero-collage{min-height:0}
+  .hero-collage .c-shape,.hero-collage .c-ring,.hero-collage .c2,.hero-collage .c3{display:none}
+  .hero-collage .c1{position:relative;width:100%;height:auto;aspect-ratio:4/3;inset:auto;transform:none;border-radius:22px;margin-top:8px}
+  .hero-collage .hero-badge.float2{left:14px;right:auto;bottom:14px;top:auto;transform:none}
+  .hero-media{max-width:none}
+  .hero.hero-full{padding:130px 0 64px}
+}
+
+/* ---------- Full-screen mobile menu ---------- */
+.mobile-menu{position:fixed;inset:0;z-index:300;background:linear-gradient(160deg,#241b45,#1d183b);
+  display:flex;flex-direction:column;padding:20px 28px 42px;
+  opacity:0;visibility:hidden;transform:translateY(-10px);
+  transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
+.mobile-menu.open{opacity:1;visibility:visible;transform:none}
+.mm-top{display:flex;align-items:center;justify-content:space-between}
+.mm-logo{height:42px;width:auto}
+.mm-close{background:rgba(255,255,255,.12);border:none;color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.9rem;line-height:1;cursor:pointer;transition:background .25s;display:grid;place-items:center}
+.mm-close:hover{background:rgba(255,255,255,.24)}
+.mm-links{display:flex;flex-direction:column;gap:2px;margin:auto 0}
+.mm-links a{color:#fff;font-size:2rem;font-weight:800;letter-spacing:-.02em;padding:11px 0;
+  opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease),color .2s}
+.mobile-menu.open .mm-links a{opacity:1;transform:none}
+.mobile-menu.open .mm-links a:nth-child(1){transition-delay:.08s}
+.mobile-menu.open .mm-links a:nth-child(2){transition-delay:.13s}
+.mobile-menu.open .mm-links a:nth-child(3){transition-delay:.18s}
+.mobile-menu.open .mm-links a:nth-child(4){transition-delay:.23s}
+.mobile-menu.open .mm-links a:nth-child(5){transition-delay:.28s}
+.mobile-menu.open .mm-links a:nth-child(6){transition-delay:.33s}
+.mobile-menu.open .mm-links a:nth-child(7){transition-delay:.38s}
+.mm-links a.active{color:var(--gold)}
+.mm-cta{align-self:flex-start;font-size:1.05rem;opacity:0;transition:opacity .5s var(--ease) .42s}
+.mobile-menu.open .mm-cta{opacity:1}
+body.menu-open{overflow:hidden}
+@media(min-width:961px){.mobile-menu{display:none !important}}
+
+/* ---------- Mobile: contact form alignment ---------- */
+@media(max-width:700px){
+  .contact-grid{grid-template-columns:1fr;gap:24px;align-items:stretch}
+  .contact-grid > .reveal,.contact-grid form{width:100%}
+  .field{margin-bottom:16px}
+  .field input,.field select,.field textarea{width:100%}
+  .contact-info{padding:30px 24px}
+  .page-hero .wrap{text-align:center}
+}

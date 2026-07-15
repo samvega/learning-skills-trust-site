@@ -4,10 +4,36 @@ const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
 onScroll();
 window.addEventListener('scroll', onScroll, {passive:true});
 
-// Mobile nav
+// Full-screen mobile menu
 const toggle = document.querySelector('.nav-toggle');
-const links = document.querySelector('.nav-links');
-if(toggle){toggle.addEventListener('click', () => links.classList.toggle('open'));}
+if(toggle){
+  const navLinks = document.querySelector('.nav-links');
+  const menu = document.createElement('div');
+  menu.className = 'mobile-menu';
+  menu.innerHTML =
+    '<div class="mm-top">' +
+      '<img class="mm-logo" src="assets/logo/lst-white.png" alt="The Learning Skills Trust">' +
+      '<button class="mm-close" aria-label="Close menu">&times;</button>' +
+    '</div>' +
+    '<nav class="mm-links"></nav>' +
+    '<a class="btn btn-gold mm-cta" href="contact.html">Get in touch <span class="arrow">&rarr;</span></a>';
+  document.body.appendChild(menu);
+  const mmLinks = menu.querySelector('.mm-links');
+  navLinks.querySelectorAll('a').forEach(a => {
+    const clone = document.createElement('a');
+    clone.href = a.getAttribute('href');
+    clone.textContent = a.textContent.trim();
+    if(a.classList.contains('active')) clone.classList.add('active');
+    mmLinks.appendChild(clone);
+  });
+  const open = () => { menu.classList.add('open'); document.body.classList.add('menu-open'); };
+  const close = () => { menu.classList.remove('open'); document.body.classList.remove('menu-open'); };
+  toggle.addEventListener('click', open);
+  menu.querySelector('.mm-close').addEventListener('click', close);
+  mmLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  menu.querySelector('.mm-cta').addEventListener('click', close);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
+}
 
 // Scroll reveal
 const io = new IntersectionObserver((entries) => {
