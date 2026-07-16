@@ -4,6 +4,23 @@ const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
 onScroll();
 window.addEventListener('scroll', onScroll, {passive:true});
 
+// Shared social icons (Instagram, LinkedIn, email, phone)
+var SOCIAL_ICONS =
+  '<a href="https://www.instagram.com/learningskillstrust" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>' +
+  '<a href="https://www.linkedin.com/company/learningskillstrust/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21h-4z"/></svg></a>' +
+  '<a href="mailto:hello@learningskillstrust.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></a>' +
+  '<a href="tel:07737145603" aria-label="Phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>';
+
+// Consistent footer social row on every page
+document.querySelectorAll('.site-footer .foot-bottom').forEach(function(fb){
+  var old = fb.querySelector('.socials');
+  if(old) old.remove();
+  var s = document.createElement('div');
+  s.className = 'socials';
+  s.innerHTML = SOCIAL_ICONS;
+  fb.appendChild(s);
+});
+
 // Full-screen mobile menu
 const toggle = document.querySelector('.nav-toggle');
 if(toggle){
@@ -16,7 +33,8 @@ if(toggle){
       '<button class="mm-close" aria-label="Close menu">&times;</button>' +
     '</div>' +
     '<nav class="mm-links"></nav>' +
-    '<a class="btn btn-gold mm-cta" href="contact.html">Get in touch <span class="arrow">&rarr;</span></a>';
+    '<a class="btn btn-gold mm-cta" href="contact.html">Get in touch <span class="arrow">&rarr;</span></a>' +
+    '<div class="mm-social">' + SOCIAL_ICONS + '</div>';
   document.body.appendChild(menu);
   const mmLinks = menu.querySelector('.mm-links');
   navLinks.querySelectorAll('a').forEach(a => {

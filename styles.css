@@ -724,3 +724,102 @@ body.menu-open{overflow:hidden}
   .contact-info{padding:30px 24px}
   .page-hero .wrap{text-align:center}
 }
+
+/* ==========================================================================
+   v9 — PSB section sub-navigation (merged-site demo)
+   ========================================================================== */
+.subnav{background:#241b45;border-bottom:1px solid rgba(255,255,255,.09)}
+.subnav-inner{display:flex;align-items:center;gap:18px;max-width:var(--maxw);margin:0 auto;padding:0 28px;overflow-x:auto;scrollbar-width:none}
+.subnav-inner::-webkit-scrollbar{display:none}
+.subnav-label{flex:0 0 auto;font-weight:800;color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:15px 16px 15px 0;border-right:1px solid rgba(255,255,255,.14);margin-right:4px}
+.subnav-links{display:flex;gap:2px;flex:1}
+.subnav-links a{white-space:nowrap;color:rgba(255,255,255,.72);font-weight:600;font-size:.94rem;padding:16px 14px;border-bottom:3px solid transparent;transition:color .2s,border-color .2s}
+.subnav-links a:hover{color:#fff}
+.subnav-links a.active{color:#fff;border-bottom-color:var(--gold)}
+.subnav-links a.ext::after{content:" ↗";opacity:.65;font-size:.85em}
+@media(max-width:700px){.subnav-label{display:none}.subnav-inner{padding:0 16px}}
+
+/* ==========================================================================
+   v10 — PSB content: mobile sub-nav, video, compare, map
+   ========================================================================== */
+/* Mobile sub-nav: clearer horizontal scroll with fade hint */
+@media(max-width:700px){
+  .subnav{position:relative}
+  .subnav-links a{padding:14px 12px;font-size:.9rem}
+  .subnav-inner{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .subnav-inner > *{scroll-snap-align:start}
+  .subnav::after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;background:linear-gradient(90deg,rgba(36,27,69,0),#241b45);pointer-events:none}
+}
+/* Responsive video embed */
+.video-embed{position:relative;padding-bottom:56.25%;height:0;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);background:#000}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* Old world / New world compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.compare .panel{border-radius:24px;padding:34px}
+.compare .old{background:var(--cream-2);border:1px solid var(--line)}
+.compare .new{background:var(--indigo);color:#fff}
+.compare .panel .eyebrow{margin-bottom:14px}
+.compare .new .eyebrow{color:var(--gold)}
+.compare .panel h3{margin-bottom:16px;font-size:1.3rem}
+.compare .new h3{color:#fff}
+.compare ul{list-style:none;display:grid;gap:12px}
+.compare li{padding-left:26px;position:relative;line-height:1.5}
+.compare .old li::before{content:"–";position:absolute;left:2px;color:var(--muted)}
+.compare .new li{color:rgba(255,255,255,.88)}
+.compare .new li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:700}
+@media(max-width:760px){.compare{grid-template-columns:1fr}}
+/* Map embed */
+.map-embed{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:var(--cream-2)}
+.map-embed iframe{display:block;width:100%;height:540px;border:0}
+@media(max-width:700px){.map-embed iframe{height:420px}}
+
+/* ==========================================================================
+   v11 — video poster, custom map, senior logos
+   ========================================================================== */
+/* Click-to-watch video poster (avoids embed-disabled errors) */
+.video-lite{display:block;position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#111 center/cover no-repeat;box-shadow:var(--shadow-lg)}
+.video-lite::after{content:"";position:absolute;inset:0;background:rgba(20,17,45,.28);transition:background .3s}
+.video-lite:hover::after{background:rgba(20,17,45,.12)}
+.video-lite .vp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:84px;height:58px;border-radius:15px;background:#f00;z-index:2;transition:transform .3s,background .3s}
+.video-lite:hover .vp{transform:translate(-50%,-50%) scale(1.09);background:#ff1f1f}
+.video-lite .vp::before{content:"";position:absolute;top:50%;left:53%;transform:translate(-50%,-50%);border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent #fff}
+.video-lite .vl{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-weight:700;font-size:.9rem;background:rgba(0,0,0,.4);padding:6px 12px;border-radius:8px}
+
+/* Custom Leaflet map */
+#psbMap{height:560px;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);z-index:1;background:var(--cream-2)}
+@media(max-width:700px){#psbMap{height:440px}}
+.leaflet-popup-content{font-family:"Raleway",sans-serif;margin:12px 14px}
+.map-pop b{color:var(--indigo);font-size:.98rem;display:block;margin-bottom:3px}
+.map-pop .r{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.map-pop a{color:var(--blue);font-weight:700;font-size:.88rem;display:inline-block;margin-top:6px}
+.map-key{display:flex;gap:22px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.map-key span{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;color:var(--muted)}
+.map-key i{width:14px;height:14px;border-radius:50%;display:inline-block}
+
+/* SDF sub-nav variant */
+.subnav.subnav-sdf{background:#2a1d4d}
+.subnav-sdf .subnav-links a.active{border-bottom-color:#c9a9ff}
+
+/* ==========================================================================
+   v12 — mobile menu tidy + socials, red PSB sub-nav, footer socials
+   ========================================================================== */
+/* Mobile menu: smaller, tighter */
+.mm-links{gap:0;margin:26px 0 auto}
+.mm-links a{font-size:1.55rem;padding:9px 0}
+.mm-social{display:flex;gap:12px;align-items:center;margin-top:24px}
+.mm-social a{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;color:#fff;transition:background .25s}
+.mm-social a:hover{background:var(--blue)}
+.mm-social svg{width:21px;height:21px}
+.mm-cta{margin-top:22px}
+
+/* PSB sub-nav → red (distinct from the plum hero); SDF stays purple */
+.subnav{background:#7e2d2a}
+.subnav.subnav-sdf{background:#2a1d4d}
+@media(max-width:700px){
+  .subnav::after{background:linear-gradient(90deg,rgba(126,45,42,0),#7e2d2a)}
+  .subnav.subnav-sdf::after{background:linear-gradient(90deg,rgba(42,29,77,0),#2a1d4d)}
+}
+
+/* Footer socials — consistent set with icons */
+.foot-bottom .socials a{color:#fff}
+.foot-bottom .socials a svg{width:18px;height:18px}
