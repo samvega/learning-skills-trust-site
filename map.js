@@ -18,9 +18,8 @@
     ["Feltonfleet",51.33,-0.41,"https://www.feltonfleet.co.uk/","m"],
     ["Finton House",51.44,-0.16,"https://www.fintonhouse.org.uk/","m"],
     ["The Gregg Prep",50.93,-1.36,"https://www.thegreggprep.org/","m"],
-    ["Haileybury Malta",35.93,14.48,"https://www.haileybury.com/","s"],
+    ["Haileybury Malta",35.93,14.48,"https://www.haileybury.com/","m"],
     ["King's House, Richmond",51.46,-0.3,"https://kingshouseschool.org/","m"],
-    ["Latymer Upper",51.49,-0.23,"https://www.latymer-upper.org/","s"],
     ["Millfield Prep",51.15,-2.71,"https://www.millfieldschool.com/prep-7-13","m"],
     ["New College School",51.75,-1.25,"https://www.newcollegeschool.org/","m"],
     ["The Oratory",51.53,-1.1,"https://www.oratory.co.uk/","s"],
@@ -45,8 +44,10 @@
   var pts = [];
   S.forEach(function(d){
     var senior = d[4] === 's';
+    var label = senior ? 'Senior / associate' : 'Member (prep) school';
+    if (d[0].indexOf('Haileybury') !== -1) label = 'Prep &amp; SDF school';
     var m = L.circleMarker([d[1], d[2]], {radius: senior?8:7, color:'#fff', weight:2, fillColor: senior?'#E9B93A':'#2E7FBB', fillOpacity:1}).addTo(map);
-    m.bindPopup('<div class="map-pop"><b>'+d[0]+'</b><span class="r">'+(senior?'Senior / associate':'Member school')+'</span><br><a href="'+d[3]+'" target="_blank" rel="noopener">Visit website ↗</a></div>');
+    m.bindPopup('<div class="map-pop"><b>'+d[0]+'</b><span class="r">'+label+'</span><br><a href="'+d[3]+'" target="_blank" rel="noopener">Visit website ↗</a></div>');
     m.on('mouseover', function(){ this.openPopup(); });
     pts.push([d[1], d[2]]);
   });

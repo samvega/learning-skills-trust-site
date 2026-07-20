@@ -823,3 +823,15 @@ body.menu-open{overflow:hidden}
 /* Footer socials — consistent set with icons */
 .foot-bottom .socials a{color:#fff}
 .foot-bottom .socials a svg{width:18px;height:18px}
+
+/* ============ v13 — testimonial quote grid (Insights) ============ */
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.quote-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.quote-grid{grid-template-columns:1fr}}
+.qcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 26px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;margin:0}
+.qcard::before{content:"\201C";position:absolute;top:6px;right:20px;font-size:4.2rem;line-height:1;color:var(--gold);opacity:.55;font-family:Georgia,serif}
+.qcat{align-self:flex-start;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:rgba(46,127,187,.1);padding:5px 11px;border-radius:999px}
+.qcard blockquote{margin:0;font-size:1.02rem;line-height:1.55;color:var(--indigo)}
+.qcard figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:14px}
+.qcard figcaption strong{font-weight:700;color:var(--indigo)}
+.qcard figcaption span{font-size:.88rem;color:var(--muted,#6b6780)}
