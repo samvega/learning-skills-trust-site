@@ -835,3 +835,9 @@ body.menu-open{overflow:hidden}
 .qcard figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:14px}
 .qcard figcaption strong{font-weight:700;color:var(--indigo)}
 .qcard figcaption span{font-size:.88rem;color:var(--muted,#6b6780)}
+
+/* ============ v14 — testimonials masonry (What schools say) ============ */
+.voices-masonry{column-count:3;column-gap:22px}
+@media(max-width:900px){.voices-masonry{column-count:2}}
+@media(max-width:620px){.voices-masonry{column-count:1}}
+.voices-masonry .qcard{display:block;break-inside:avoid;margin:0 0 22px}

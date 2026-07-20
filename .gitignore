@@ -1,0 +1,8 @@
+# macOS / iCloud filesystem artifacts
+.DS_Store
+.fuse_hidden*
+._*
+
+# local backups / removed files
+blog.html.removed
+_backup-pre-tidy/
