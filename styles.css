@@ -353,6 +353,7 @@ h3{font-size:1.35rem;letter-spacing:-.01em}
 .hero-collage .c3{width:34%;height:30%;bottom:0;right:8%;z-index:4;transform:rotate(3deg)}
 .hero-collage .c-shape{position:absolute;width:130px;height:130px;border-radius:28px;background:var(--gold);top:12%;left:8%;z-index:1;transform:rotate(12deg);opacity:.9}
 .hero-collage .c-ring{position:absolute;width:90px;height:90px;border-radius:50%;border:10px solid var(--blue);top:2%;right:2%;z-index:5;opacity:.85}
+.hero-collage .hero-badge{z-index:6}
 .hero-badge.float2{left:auto;right:-10px;bottom:auto;top:44%}
 
 /* ---------- Photo marquee ---------- */
