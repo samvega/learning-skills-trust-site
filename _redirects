@@ -1,0 +1,12 @@
+# Redirect the old PSB domain (psbacc.org) to the PSB section of the LST site.
+# Host-based rules — these only fire for the aliased domains, never for learningskillstrust.com.
+https://psbacc.org/*                       https://learningskillstrust.com/psb.html  301!
+https://www.psbacc.org/*                   https://learningskillstrust.com/psb.html  301!
+http://psbacc.org/*                        https://learningskillstrust.com/psb.html  301!
+http://www.psbacc.org/*                    https://learningskillstrust.com/psb.html  301!
+
+# Redirect the old SDF domain to the SDF section of the LST site.
+https://skillsdevelopmentframework.com/*       https://learningskillstrust.com/sdf.html  301!
+https://www.skillsdevelopmentframework.com/*   https://learningskillstrust.com/sdf.html  301!
+http://skillsdevelopmentframework.com/*        https://learningskillstrust.com/sdf.html  301!
+http://www.skillsdevelopmentframework.com/*    https://learningskillstrust.com/sdf.html  301!

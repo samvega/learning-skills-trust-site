@@ -43,7 +43,9 @@
 <section class="sec-tight">
   <div class="wrap contact-grid">
     <div class="reveal">
-      <form id="contactForm">
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
         <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
         <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@school.org"></div>
         <div class="field"><label for="topic">I'm enquiring about</label>
@@ -56,7 +58,7 @@
         </div>
         <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="How can we help?"></textarea></div>
         <button type="submit" class="btn btn-primary">Send message <span class="arrow">→</span></button>
-        <p id="formNote" style="display:none;margin-top:16px;color:var(--blue);font-weight:700">Thanks — this is a preview form. Once live, messages will land in hello@learningskillstrust.com.</p>
+        <p id="formNote" style="display:none;margin-top:16px;color:var(--blue);font-weight:700">Thanks for getting in touch — we've received your message and will reply as soon as we can.</p>
       </form>
     </div>
     <div class="contact-info reveal d1">

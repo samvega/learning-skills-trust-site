@@ -128,13 +128,20 @@ if(bioModal){
   document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
 }
 
-// Contact form (preview only)
+// Contact form → submits to Netlify Forms (AJAX, stays on page)
 const form = document.querySelector('#contactForm');
 if(form){
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
     const note = document.querySelector('#formNote');
-    if(note) note.style.display = 'block';
-    form.reset();
+    const body = new URLSearchParams(new FormData(form)).toString();
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body})
+      .then(() => {
+        if(note){ note.style.color = 'var(--blue)'; note.textContent = "Thanks for getting in touch — we've received your message and will reply as soon as we can."; note.style.display = 'block'; }
+        form.reset();
+      })
+      .catch(() => {
+        if(note){ note.style.color = 'var(--red)'; note.textContent = 'Sorry, something went wrong — please email hello@learningskillstrust.com.'; note.style.display = 'block'; }
+      });
   });
 }
