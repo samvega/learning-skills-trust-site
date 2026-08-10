@@ -1,5 +1,8 @@
+# Let SSL / Let's Encrypt (ACME) domain validation through BEFORE any forced redirect.
+# First match wins in Netlify, so this must stay at the top.
+/.well-known/acme-challenge/*   /.well-known/acme-challenge/:splat   200
+
 # Redirect the old PSB domain (psbacc.org) to the PSB section of the LST site.
-# Host-based rules — these only fire for the aliased domains, never for learningskillstrust.com.
 https://psbacc.org/*                       https://learningskillstrust.com/psb.html  301!
 https://www.psbacc.org/*                   https://learningskillstrust.com/psb.html  301!
 http://psbacc.org/*                        https://learningskillstrust.com/psb.html  301!
