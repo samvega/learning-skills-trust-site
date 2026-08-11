@@ -1,15 +1,6 @@
-# Let SSL / Let's Encrypt (ACME) domain validation through BEFORE any forced redirect.
-# First match wins in Netlify, so this must stay at the top.
+# Allow Let's Encrypt / ACME domain validation through untouched.
 /.well-known/acme-challenge/*   /.well-known/acme-challenge/:splat   200
 
-# Redirect the old PSB domain (psbacc.org) to the PSB section of the LST site.
-https://psbacc.org/*                       https://learningskillstrust.com/psb.html  301!
-https://www.psbacc.org/*                   https://learningskillstrust.com/psb.html  301!
-http://psbacc.org/*                        https://learningskillstrust.com/psb.html  301!
-http://www.psbacc.org/*                    https://learningskillstrust.com/psb.html  301!
-
-# Redirect the old SDF domain to the SDF section of the LST site.
-https://skillsdevelopmentframework.com/*       https://learningskillstrust.com/sdf.html  301!
-https://www.skillsdevelopmentframework.com/*   https://learningskillstrust.com/sdf.html  301!
-http://skillsdevelopmentframework.com/*        https://learningskillstrust.com/sdf.html  301!
-http://www.skillsdevelopmentframework.com/*    https://learningskillstrust.com/sdf.html  301!
+# NOTE: psbacc.org and skillsdevelopmentframework.com forced redirects are
+# temporarily removed so the SSL certificate can validate & issue for all
+# domains. They will be re-added once HTTPS is confirmed working.
