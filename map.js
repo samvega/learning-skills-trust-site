@@ -3,7 +3,6 @@
   if(!el || typeof L === 'undefined') return;
   // [name, lat, lng, url, type]  type: m = member/prep, s = senior/associate
   var S = [
-    ["Aldro School",51.19,-0.65,"https://www.aldro.org/","m"],
     ["Amesbury",51.11,-0.74,"https://www.amesburyschool.co.uk/","m"],
     ["Ashford School",51.15,0.87,"https://www.ashfordschool.co.uk/","m"],
     ["Banstead",51.32,-0.2,"https://www.bansteadprep.com/","m"],
@@ -24,7 +23,6 @@
     ["Somerhill",51.19,0.29,"https://www.somerhill.org/","m"],
     ["St Andrew's",51.48,-1.09,"https://www.standrewsberkshire.co.uk/","m"],
     ["St Columba's",51.75,-0.34,"https://stcolumbascollege.org/","m"],
-    ["St Edmund's",51.11,-0.74,"https://www.saintedmunds.co.uk/","m"],
     ["St George's, Windsor",51.48,-0.6,"https://www.stgwindsor.org/","m"],
     ["St Ives, Haslemere",51.09,-0.71,"https://www.stiveshaslemere.com/","m"],
     ["St Neot's",51.34,-0.87,"https://www.stneotsprep.co.uk/","m"],
@@ -37,7 +35,8 @@
     ["West Hill Park",50.85,-1.24,"https://www.westhillpark.com/","m"]
   ];
   var map = L.map('psbMap', {scrollWheelZoom:false});
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:'&copy; OpenStreetMap'}).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {maxZoom:16, attribution:'Tiles &copy; Esri'}).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {maxZoom:16, attribution:''}).addTo(map);
   var pts = [];
   S.forEach(function(d){
     var senior = d[4] === 's';
